@@ -19,7 +19,6 @@ static const NSUInteger kButtonTagOffset = 1000;
 @property (nonatomic, strong) UIView *arrowLayerBgView;
 @property (nonatomic, strong) UIView *itemContainerView;
 @property (nonatomic, copy) NSArray *btnItemArray; //array of btn
-@property (nonatomic, assign) CGPoint startPoint;
 @property (nonatomic, strong) UIView *inView;
 
 @end
@@ -74,39 +73,47 @@ static const NSUInteger kButtonTagOffset = 1000;
     UIView *itemView = [barButtonItem valueForKey:@"view"];
     CGPoint itemViewCenter = itemView.center;
     
-    self.startPoint = CGPointMake(itemViewCenter.x, 64);
+    CGPoint startPoint = CGPointMake(itemViewCenter.x, 64);
     
-    CGFloat selfCenterX;
-    CGFloat selfCenterY;
+    ICDPopupMenuArrowPosition arrowPositon;
     if (itemViewCenter.x < CGRectGetWidth([UIScreen mainScreen].bounds)/2) {
         //LeftBarButtonItem
-        selfCenterX = self.startPoint.x-kArrowWidth/2-kArrowTrailingSuperSpacing + CGRectGetWidth(self.bounds) / 2;
-        selfCenterY = 64 + CGRectGetHeight(self.bounds) / 2;
+        arrowPositon = ICDPopupMenuArrowPositionTopLeft;
     } else {
         //RightBarButtonItem
-        selfCenterX = self.startPoint.x+kArrowWidth/2+kArrowTrailingSuperSpacing - CGRectGetWidth(self.bounds) / 2;
-        selfCenterY = 64 + CGRectGetHeight(self.bounds) / 2;
+        arrowPositon = ICDPopupMenuArrowPositionTopRight;
     }
-
-    [self showAtCenter:CGPointMake(selfCenterX, selfCenterY) inView:itemView.window.rootViewController.view];
+    
+    [self showInView:itemView.window.rootViewController.view startPoint:startPoint arrowPositon:arrowPositon];
 }
 
 
 - (void)showInView:(UIView *)inView startPoint:(CGPoint)startPoint arrowPositon:(ICDPopupMenuArrowPosition)position {
-    self.startPoint = startPoint;
+    self.inView = inView;
     
     //默认Center&Top
     CGFloat selfCenterX = startPoint.x;
     CGFloat selfCenterY = startPoint.y + CGRectGetHeight(self.bounds) / 2;
     if (position == ICDPopupMenuArrowPositionTopLeft) {
-        selfCenterX = self.startPoint.x-kArrowWidth/2-kArrowTrailingSuperSpacing + CGRectGetWidth(self.bounds) / 2;
-        selfCenterY = 64 + CGRectGetHeight(self.bounds) / 2;
+        selfCenterX = startPoint.x - kArrowWidth/2-kArrowTrailingSuperSpacing + CGRectGetWidth(self.bounds) / 2;
+        selfCenterY = startPoint.y + CGRectGetHeight(self.bounds) / 2;
     }
     if (position == ICDPopupMenuArrowPositionTopRight) {
-        selfCenterX = self.startPoint.x+kArrowWidth/2+kArrowTrailingSuperSpacing - CGRectGetWidth(self.bounds) / 2;
-        selfCenterY = 64 + CGRectGetHeight(self.bounds) / 2;
+        selfCenterX = startPoint.x + kArrowWidth/2+kArrowTrailingSuperSpacing - CGRectGetWidth(self.bounds) / 2;
+        selfCenterY = startPoint.y + CGRectGetHeight(self.bounds) / 2;
     }
-    [self showAtCenter:CGPointMake(selfCenterX, selfCenterY) inView:inView];
+    
+    CGRect frame = self.frame;
+    frame.origin.x = selfCenterX - CGRectGetWidth(self.bounds)/2;
+    frame.origin.y = selfCenterY - CGRectGetHeight(self.bounds)/2;
+    self.frame = frame;
+    
+    ICDPopup *popup = [ICDPopup popupWithContentView:self];
+    [popup showAtCenter:CGPointMake(selfCenterX, selfCenterY) startPoint:startPoint inView:inView animation:YES];
+    
+    //需要加入到popup后才能计算出三角形指示箭头的位置，此时才开始画layer
+    CAShapeLayer *layer = [self createArrowLayerInSuperStartPoint:startPoint];
+    [_arrowLayerBgView.layer addSublayer:layer];
 }
 
 #pragma mark - private methods
@@ -122,22 +129,6 @@ static const NSUInteger kButtonTagOffset = 1000;
     _itemContainerView.layer.cornerRadius = 5;
     _itemContainerView.layer.masksToBounds = YES;
     [self addSubview:_itemContainerView];
-}
-
-- (void)showAtCenter:(CGPoint)center inView:(UIView *)view {
-    self.inView = view;
-    
-    CGRect frame = self.frame;
-    frame.origin.x = center.x-CGRectGetWidth(self.bounds)/2;
-    frame.origin.y = center.y-CGRectGetHeight(self.bounds)/2;
-    self.frame = frame;
-    
-    ICDPopup *popup = [ICDPopup popupWithContentView:self];
-    [popup showAtCenter:center startPoint:self.startPoint inView:view animation:YES];
-    
-    //需要加入到popup后才能计算出三角形指示箭头的位置，此时才开始画layer
-    CAShapeLayer *layer = [self createArrowLayer];
-    [_arrowLayerBgView.layer addSublayer:layer];
 }
 
 - (void)hide {
@@ -158,13 +149,13 @@ static const NSUInteger kButtonTagOffset = 1000;
     return button;
 }
 
-- (CAShapeLayer *)createArrowLayer {
+- (CAShapeLayer *)createArrowLayerInSuperStartPoint:(CGPoint)superStartPoint {
     CAShapeLayer *layer = [CAShapeLayer new];
     
     CGFloat width = kArrowWidth;
     CGFloat height = kArrowHeight;
     
-    CGPoint startPoint = [self convertPoint:self.startPoint fromView:self.inView];
+    CGPoint startPoint = [self convertPoint:superStartPoint fromView:self.inView];
     
     UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, kArrowHeight, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) - kArrowHeight) byRoundingCorners:UIRectCornerAllCorners cornerRadii:CGSizeMake(5, 5)];
     CGPoint arrowTopPoint = startPoint;
