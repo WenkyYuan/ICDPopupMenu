@@ -14,6 +14,9 @@
 		268E1FE21BF5B835000690B7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 268E1FE11BF5B835000690B7 /* Images.xcassets */; };
 		268E1FE51BF5B835000690B7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 268E1FE31BF5B835000690B7 /* LaunchScreen.xib */; };
 		268E1FF11BF5B835000690B7 /* ICDPopupMenuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 268E1FF01BF5B835000690B7 /* ICDPopupMenuTests.m */; };
+		268E1FFF1BF5B898000690B7 /* ICDPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 268E1FFC1BF5B898000690B7 /* ICDPopup.m */; };
+		268E20001BF5B898000690B7 /* ICDPopupMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 268E1FFE1BF5B898000690B7 /* ICDPopupMenu.m */; };
+		268E20031BF5B92A000690B7 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 268E20021BF5B92A000690B7 /* UIImage+Color.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,12 @@
 		268E1FEA1BF5B835000690B7 /* ICDPopupMenuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ICDPopupMenuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		268E1FEF1BF5B835000690B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		268E1FF01BF5B835000690B7 /* ICDPopupMenuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ICDPopupMenuTests.m; sourceTree = "<group>"; };
+		268E1FFB1BF5B898000690B7 /* ICDPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICDPopup.h; sourceTree = "<group>"; };
+		268E1FFC1BF5B898000690B7 /* ICDPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICDPopup.m; sourceTree = "<group>"; };
+		268E1FFD1BF5B898000690B7 /* ICDPopupMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICDPopupMenu.h; sourceTree = "<group>"; };
+		268E1FFE1BF5B898000690B7 /* ICDPopupMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICDPopupMenu.m; sourceTree = "<group>"; };
+		268E20011BF5B92A000690B7 /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
+		268E20021BF5B92A000690B7 /* UIImage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +90,7 @@
 		268E1FD31BF5B835000690B7 /* ICDPopupMenu */ = {
 			isa = PBXGroup;
 			children = (
+				268E1FFA1BF5B898000690B7 /* Class */,
 				268E1FD81BF5B835000690B7 /* AppDelegate.h */,
 				268E1FD91BF5B835000690B7 /* AppDelegate.m */,
 				268E1FDB1BF5B835000690B7 /* ViewController.h */,
@@ -117,6 +127,19 @@
 				268E1FEF1BF5B835000690B7 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		268E1FFA1BF5B898000690B7 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				268E20011BF5B92A000690B7 /* UIImage+Color.h */,
+				268E20021BF5B92A000690B7 /* UIImage+Color.m */,
+				268E1FFB1BF5B898000690B7 /* ICDPopup.h */,
+				268E1FFC1BF5B898000690B7 /* ICDPopup.m */,
+				268E1FFD1BF5B898000690B7 /* ICDPopupMenu.h */,
+				268E1FFE1BF5B898000690B7 /* ICDPopupMenu.m */,
+			);
+			path = Class;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,7 +243,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				268E1FDD1BF5B835000690B7 /* ViewController.m in Sources */,
+				268E1FFF1BF5B898000690B7 /* ICDPopup.m in Sources */,
 				268E1FDA1BF5B835000690B7 /* AppDelegate.m in Sources */,
+				268E20031BF5B92A000690B7 /* UIImage+Color.m in Sources */,
+				268E20001BF5B898000690B7 /* ICDPopupMenu.m in Sources */,
 				268E1FD71BF5B835000690B7 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
