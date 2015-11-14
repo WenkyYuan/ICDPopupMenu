@@ -42,7 +42,7 @@
         [weakSelf.navigationController pushViewController:vc animated:YES];
     };
     CGPoint startPoint = button.center;
-    [menu showInView:self.view startPoint:startPoint arrowPositon:self.arrowPosition];
+    [menu showFromPoint:startPoint inView:self.view arrowPositon:self.arrowPosition];
 }
 
 - (NSArray *)menuDicArray {

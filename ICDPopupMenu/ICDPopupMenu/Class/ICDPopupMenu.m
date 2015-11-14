@@ -245,11 +245,11 @@ static const NSUInteger kButtonTagOffset = 1000;
         arrowPositon = ICDPopupMenuArrowPositionTopRight;
     }
     
-    [self showInView:itemView.window.rootViewController.view startPoint:startPoint arrowPositon:arrowPositon];
+    [self showFromPoint:startPoint inView:itemView.window.rootViewController.view arrowPositon:arrowPositon];
 }
 
 
-- (void)showInView:(UIView *)inView startPoint:(CGPoint)startPoint arrowPositon:(ICDPopupMenuArrowPosition)position {
+- (void)showFromPoint:(CGPoint)startPoint inView:(UIView *)inView arrowPositon:(ICDPopupMenuArrowPosition)position {
     CGFloat selfWidth = CGRectGetWidth(self.bounds);
     CGFloat selfHeight = CGRectGetHeight(self.bounds);
     
