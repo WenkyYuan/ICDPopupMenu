@@ -11,6 +11,7 @@
 
 @interface TestViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *tipLabel;
+@property (weak, nonatomic) IBOutlet UIView *tipView;
 @property (nonatomic, assign) ICDPopupMenuArrowPosition arrowPosition;
 @end
 
@@ -20,12 +21,13 @@
     [super viewDidLoad];
     
     self.title = @"ICDPopupMenu";
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     self.arrowPosition = ICDPopupMenuArrowPositionTopLeft;
 }
 
 - (IBAction)didShowMenu:(id)sender {
     UIButton *button = (UIButton *)sender;
-    
+
     //不需要origin
     ICDPopupMenu *menu = [[ICDPopupMenu alloc] initWithFrame:CGRectMake(0, 0, 140, 143)];
     NSMutableArray *itemArray = [NSMutableArray new];
@@ -41,8 +43,11 @@
         vc.view.backgroundColor = [UIColor blueColor];
         [weakSelf.navigationController pushViewController:vc animated:YES];
     };
-    CGPoint startPoint = button.center;
-    [menu showFromPoint:startPoint inView:self.view arrowPositon:self.arrowPosition];
+    
+//    CGPoint startPoint = button.center;
+//    [menu showFromStartPoint:startPoint inView:self.tipView arrowPositon:self.arrowPosition];
+    
+    [menu showFromStartView:button arrowPositon:self.arrowPosition];
 }
 
 - (NSArray *)menuDicArray {

@@ -245,11 +245,34 @@ static const NSUInteger kButtonTagOffset = 1000;
         arrowPositon = ICDPopupMenuArrowPositionTopRight;
     }
     
-    [self showFromPoint:startPoint inView:itemView.window.rootViewController.view arrowPositon:arrowPositon];
+    [self showFromStartPoint:startPoint inView:itemView.window.rootViewController.view arrowPositon:arrowPositon];
 }
 
+- (void)showFromStartView:(UIView *)startView arrowPositon:(ICDPopupMenuArrowPosition)position {
+    UIView *inView = startView.superview;
+    CGRect frame = startView.frame;
+    CGPoint startPoint = CGPointZero;
+    
+    if (position == ICDPopupMenuArrowPositionTopLeft || position == ICDPopupMenuArrowPositionTopCenter || position == ICDPopupMenuArrowPositionTopRight) {
+        startPoint = CGPointMake(startView.center.x, CGRectGetMaxY(frame));
+    }
+    
+    if (position == ICDPopupMenuArrowPositionBottomLeft || position == ICDPopupMenuArrowPositionBottomCenter || position == ICDPopupMenuArrowPositionBottomRight) {
+        startPoint = CGPointMake(startView.center.x, CGRectGetMinY(frame));
+    }
+    
+    if (position == ICDPopupMenuArrowPositionLeftTop || position == ICDPopupMenuArrowPositionLeftCenter || position == ICDPopupMenuArrowPositionLeftBottom) {
+        startPoint = CGPointMake(CGRectGetMaxX(frame), startView.center.y);
+    }
+    
+    if (position == ICDPopupMenuArrowPositionRightTop || position == ICDPopupMenuArrowPositionRightCenter || position == ICDPopupMenuArrowPositionRightBottom) {
+        startPoint = CGPointMake(CGRectGetMinX(frame), startView.center.y);
+    }
+    
+    [self showFromStartPoint:startPoint inView:inView arrowPositon:position];
+}
 
-- (void)showFromPoint:(CGPoint)startPoint inView:(UIView *)inView arrowPositon:(ICDPopupMenuArrowPosition)position {
+- (void)showFromStartPoint:(CGPoint)startPoint inView:(UIView *)inView arrowPositon:(ICDPopupMenuArrowPosition)position {
     CGFloat selfWidth = CGRectGetWidth(self.bounds);
     CGFloat selfHeight = CGRectGetHeight(self.bounds);
     

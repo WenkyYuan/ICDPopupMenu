@@ -65,6 +65,8 @@ typedef void(^ICDPopupMenuActionHandler)(ICDPopupMenu *view, NSUInteger index);
 
 - (void)showFromNavigationBarButtonItem:(UIBarButtonItem *)barButtonItem;
 
-- (void)showFromPoint:(CGPoint)startPoint inView:(UIView *)inView arrowPositon:(ICDPopupMenuArrowPosition)position;
+- (void)showFromStartView:(UIView *)startView arrowPositon:(ICDPopupMenuArrowPosition)position;
+
+- (void)showFromStartPoint:(CGPoint)startPoint inView:(UIView *)inView arrowPositon:(ICDPopupMenuArrowPosition)position;
 
 @end
