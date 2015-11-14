@@ -11,7 +11,7 @@
 @interface ICDPopup ()
 @property (nonatomic, strong) UIView *containerView;
 @property (nonatomic, strong) UIView *contentView;
-@property (nonatomic, assign) CGPoint startPoint;
+@property (nonatomic, assign) CGPoint containerStartPoint;
 @property (nonatomic, assign) BOOL dismissing;
 
 @end
@@ -44,8 +44,6 @@
 }
 
 - (void)showAtCenter:(CGPoint)center startPoint:(CGPoint)startPoint inView:(UIView *)inView animation:(BOOL)animation{
-    self.startPoint = startPoint;
-    
     if(!self.superview){
         NSEnumerator *frontToBackWindows = [[[UIApplication sharedApplication] windows] reverseObjectEnumerator];
         
@@ -56,7 +54,6 @@
             }
         }
     }
-    
     self.frame = self.window.bounds;
     
     if (self.contentView.superview) {
@@ -69,6 +66,8 @@
     self.contentView.frame = CGRectMake(0, 0, width, height);
     
     CGPoint containerCenter = [self convertPoint:center fromView:inView];
+    CGPoint containerStartPoint = [self convertPoint:startPoint fromView:inView];
+    self.containerStartPoint = containerStartPoint;
     
     self.containerView.frame = CGRectMake(containerCenter.x - width / 2, containerCenter.y - height / 2, width, height);
     
@@ -76,8 +75,7 @@
         self.containerView.alpha = 0.0;
         CGRect finalContainerFrame = self.containerView.frame;
         self.containerView.transform = CGAffineTransformMakeScale(0.01, 0.01);
-        self.containerView.center = self.startPoint;
-        
+        self.containerView.center = containerStartPoint;
         [UIView animateWithDuration:0.6
                               delay:0.0
              usingSpringWithDamping:0.8
@@ -105,7 +103,7 @@
             }
         };
         
-        CGPoint finalContainerCenter = self.startPoint;
+        CGPoint finalContainerCenter = self.containerStartPoint;
         if (animation) {
             [UIView animateWithDuration:0.3
                                   delay:0
@@ -128,7 +126,6 @@
 @implementation UIView (ICDPopup)
 
 - (void)dismissPresentingICDPopup {
-    
     // Iterate over superviews until you find a ICDPopup and dismiss it, then gtfo
     UIView* view = self;
     while (view != nil) {
