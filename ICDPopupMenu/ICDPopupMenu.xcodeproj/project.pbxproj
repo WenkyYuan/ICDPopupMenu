@@ -11,23 +11,12 @@
 		268E1FDA1BF5B835000690B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 268E1FD91BF5B835000690B7 /* AppDelegate.m */; };
 		268E1FE21BF5B835000690B7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 268E1FE11BF5B835000690B7 /* Images.xcassets */; };
 		268E1FE51BF5B835000690B7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 268E1FE31BF5B835000690B7 /* LaunchScreen.xib */; };
-		268E1FF11BF5B835000690B7 /* ICDPopupMenuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 268E1FF01BF5B835000690B7 /* ICDPopupMenuTests.m */; };
 		268E1FFF1BF5B898000690B7 /* ICDPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 268E1FFC1BF5B898000690B7 /* ICDPopup.m */; };
 		268E20001BF5B898000690B7 /* ICDPopupMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 268E1FFE1BF5B898000690B7 /* ICDPopupMenu.m */; };
 		268E20031BF5B92A000690B7 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 268E20021BF5B92A000690B7 /* UIImage+Color.m */; };
 		268E200F1BF6CE4C000690B7 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 268E200D1BF6CE4C000690B7 /* TestViewController.m */; };
 		268E20101BF6CE4C000690B7 /* TestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 268E200E1BF6CE4C000690B7 /* TestViewController.xib */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		268E1FEB1BF5B835000690B7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 268E1FC91BF5B835000690B7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 268E1FD01BF5B835000690B7;
-			remoteInfo = ICDPopupMenu;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		268E1FD11BF5B835000690B7 /* ICDPopupMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ICDPopupMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -37,9 +26,6 @@
 		268E1FD91BF5B835000690B7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		268E1FE11BF5B835000690B7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		268E1FE41BF5B835000690B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		268E1FEA1BF5B835000690B7 /* ICDPopupMenuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ICDPopupMenuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		268E1FEF1BF5B835000690B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		268E1FF01BF5B835000690B7 /* ICDPopupMenuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ICDPopupMenuTests.m; sourceTree = "<group>"; };
 		268E1FFB1BF5B898000690B7 /* ICDPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICDPopup.h; sourceTree = "<group>"; };
 		268E1FFC1BF5B898000690B7 /* ICDPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICDPopup.m; sourceTree = "<group>"; };
 		268E1FFD1BF5B898000690B7 /* ICDPopupMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICDPopupMenu.h; sourceTree = "<group>"; };
@@ -59,13 +45,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		268E1FE71BF5B835000690B7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -73,7 +52,6 @@
 			isa = PBXGroup;
 			children = (
 				268E1FD31BF5B835000690B7 /* ICDPopupMenu */,
-				268E1FED1BF5B835000690B7 /* ICDPopupMenuTests */,
 				268E1FD21BF5B835000690B7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -82,7 +60,6 @@
 			isa = PBXGroup;
 			children = (
 				268E1FD11BF5B835000690B7 /* ICDPopupMenu.app */,
-				268E1FEA1BF5B835000690B7 /* ICDPopupMenuTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -108,23 +85,6 @@
 			children = (
 				268E1FD51BF5B835000690B7 /* Info.plist */,
 				268E1FD61BF5B835000690B7 /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		268E1FED1BF5B835000690B7 /* ICDPopupMenuTests */ = {
-			isa = PBXGroup;
-			children = (
-				268E1FF01BF5B835000690B7 /* ICDPopupMenuTests.m */,
-				268E1FEE1BF5B835000690B7 /* Supporting Files */,
-			);
-			path = ICDPopupMenuTests;
-			sourceTree = "<group>";
-		};
-		268E1FEE1BF5B835000690B7 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				268E1FEF1BF5B835000690B7 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -162,24 +122,6 @@
 			productReference = 268E1FD11BF5B835000690B7 /* ICDPopupMenu.app */;
 			productType = "com.apple.product-type.application";
 		};
-		268E1FE91BF5B835000690B7 /* ICDPopupMenuTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 268E1FF71BF5B835000690B7 /* Build configuration list for PBXNativeTarget "ICDPopupMenuTests" */;
-			buildPhases = (
-				268E1FE61BF5B835000690B7 /* Sources */,
-				268E1FE71BF5B835000690B7 /* Frameworks */,
-				268E1FE81BF5B835000690B7 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				268E1FEC1BF5B835000690B7 /* PBXTargetDependency */,
-			);
-			name = ICDPopupMenuTests;
-			productName = ICDPopupMenuTests;
-			productReference = 268E1FEA1BF5B835000690B7 /* ICDPopupMenuTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -191,10 +133,6 @@
 				TargetAttributes = {
 					268E1FD01BF5B835000690B7 = {
 						CreatedOnToolsVersion = 6.4;
-					};
-					268E1FE91BF5B835000690B7 = {
-						CreatedOnToolsVersion = 6.4;
-						TestTargetID = 268E1FD01BF5B835000690B7;
 					};
 				};
 			};
@@ -212,7 +150,6 @@
 			projectRoot = "";
 			targets = (
 				268E1FD01BF5B835000690B7 /* ICDPopupMenu */,
-				268E1FE91BF5B835000690B7 /* ICDPopupMenuTests */,
 			);
 		};
 /* End PBXProject section */
@@ -225,13 +162,6 @@
 				268E1FE51BF5B835000690B7 /* LaunchScreen.xib in Resources */,
 				268E20101BF6CE4C000690B7 /* TestViewController.xib in Resources */,
 				268E1FE21BF5B835000690B7 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		268E1FE81BF5B835000690B7 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,23 +181,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		268E1FE61BF5B835000690B7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				268E1FF11BF5B835000690B7 /* ICDPopupMenuTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		268E1FEC1BF5B835000690B7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 268E1FD01BF5B835000690B7 /* ICDPopupMenu */;
-			targetProxy = 268E1FEB1BF5B835000690B7 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		268E1FE31BF5B835000690B7 /* LaunchScreen.xib */ = {
@@ -381,40 +295,6 @@
 			};
 			name = Release;
 		};
-		268E1FF81BF5B835000690B7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = ICDPopupMenuTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ICDPopupMenu.app/ICDPopupMenu";
-			};
-			name = Debug;
-		};
-		268E1FF91BF5B835000690B7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = ICDPopupMenuTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ICDPopupMenu.app/ICDPopupMenu";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -434,14 +314,7 @@
 				268E1FF61BF5B835000690B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		268E1FF71BF5B835000690B7 /* Build configuration list for PBXNativeTarget "ICDPopupMenuTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				268E1FF81BF5B835000690B7 /* Debug */,
-				268E1FF91BF5B835000690B7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
