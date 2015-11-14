@@ -12,7 +12,6 @@
 		268E1FE21BF5B835000690B7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 268E1FE11BF5B835000690B7 /* Images.xcassets */; };
 		268E1FE51BF5B835000690B7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 268E1FE31BF5B835000690B7 /* LaunchScreen.xib */; };
 		268E20001BF5B898000690B7 /* ICDPopupMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 268E1FFE1BF5B898000690B7 /* ICDPopupMenu.m */; };
-		268E20031BF5B92A000690B7 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 268E20021BF5B92A000690B7 /* UIImage+Color.m */; };
 		268E200F1BF6CE4C000690B7 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 268E200D1BF6CE4C000690B7 /* TestViewController.m */; };
 		268E20101BF6CE4C000690B7 /* TestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 268E200E1BF6CE4C000690B7 /* TestViewController.xib */; };
 /* End PBXBuildFile section */
@@ -27,8 +26,6 @@
 		268E1FE41BF5B835000690B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		268E1FFD1BF5B898000690B7 /* ICDPopupMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICDPopupMenu.h; sourceTree = "<group>"; };
 		268E1FFE1BF5B898000690B7 /* ICDPopupMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICDPopupMenu.m; sourceTree = "<group>"; };
-		268E20011BF5B92A000690B7 /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
-		268E20021BF5B92A000690B7 /* UIImage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
 		268E200C1BF6CE4C000690B7 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		268E200D1BF6CE4C000690B7 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		268E200E1BF6CE4C000690B7 /* TestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestViewController.xib; sourceTree = "<group>"; };
@@ -89,8 +86,6 @@
 		268E1FFA1BF5B898000690B7 /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				268E20011BF5B92A000690B7 /* UIImage+Color.h */,
-				268E20021BF5B92A000690B7 /* UIImage+Color.m */,
 				268E1FFD1BF5B898000690B7 /* ICDPopupMenu.h */,
 				268E1FFE1BF5B898000690B7 /* ICDPopupMenu.m */,
 			);
@@ -169,7 +164,6 @@
 			files = (
 				268E200F1BF6CE4C000690B7 /* TestViewController.m in Sources */,
 				268E1FDA1BF5B835000690B7 /* AppDelegate.m in Sources */,
-				268E20031BF5B92A000690B7 /* UIImage+Color.m in Sources */,
 				268E20001BF5B898000690B7 /* ICDPopupMenu.m in Sources */,
 				268E1FD71BF5B835000690B7 /* main.m in Sources */,
 			);

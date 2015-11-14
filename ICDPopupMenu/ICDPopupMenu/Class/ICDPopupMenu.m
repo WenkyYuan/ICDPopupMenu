@@ -7,7 +7,6 @@
 //
 
 #import "ICDPopupMenu.h"
-#import "UIImage+Color.h"
 
 @interface ICDPopup : UIView
 
@@ -154,6 +153,36 @@
         }
         view = [view superview];
     }
+}
+
+@end
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+@interface UIImage (ICDColor)
+
++ (instancetype)imageWithColor:(UIColor *)color;
++ (instancetype)imageWithColor:(UIColor *)color size:(CGSize)size;
+
+@end
+
+@implementation UIImage (ICDColor)
+
++ (instancetype)imageWithColor:(UIColor *)color {
+    return [self imageWithColor:color size:CGSizeMake(0.5, 0.5)];
+}
+
++ (instancetype)imageWithColor:(UIColor *)color size:(CGSize)size {
+    CGRect rect = CGRectMake(0.0f, 0.0f, size.width, size.height);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
 }
 
 @end
