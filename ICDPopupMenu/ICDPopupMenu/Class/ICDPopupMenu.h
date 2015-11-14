@@ -63,6 +63,8 @@ typedef void(^ICDPopupMenuActionHandler)(ICDPopupMenu *view, NSUInteger index);
 
 @property (nonatomic, copy) ICDPopupMenuActionHandler actionHandler;
 
+- (instancetype)initWithMenuSize:(CGSize)size;
+
 - (void)showFromNavigationBarButtonItem:(UIBarButtonItem *)barButtonItem;
 
 - (void)showFromStartView:(UIView *)startView arrowPositon:(ICDPopupMenuArrowPosition)position;

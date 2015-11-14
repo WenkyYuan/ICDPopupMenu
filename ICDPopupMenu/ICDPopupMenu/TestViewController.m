@@ -28,8 +28,7 @@
 - (IBAction)didShowMenu:(id)sender {
     UIButton *button = (UIButton *)sender;
 
-    //不需要origin
-    ICDPopupMenu *menu = [[ICDPopupMenu alloc] initWithFrame:CGRectMake(0, 0, 140, 143)];
+    ICDPopupMenu *menu = [[ICDPopupMenu alloc] initWithMenuSize:CGSizeMake(140, 143)];
     NSMutableArray *itemArray = [NSMutableArray new];
     for (NSDictionary *menuDic in [self menuDicArray]) {
         ICDPopupMenuItem *item = [[ICDPopupMenuItem alloc] initWithTitle:menuDic[@"title"] imageName:menuDic[@"image"]];

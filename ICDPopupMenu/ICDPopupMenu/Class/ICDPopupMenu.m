@@ -220,6 +220,15 @@ static const NSUInteger kButtonTagOffset = 1000;
     return self;
 }
 
+- (instancetype)initWithMenuSize:(CGSize)size {
+    self = [super init];
+    if (self) {
+        self.frame = CGRectMake(0, 0, size.width, size.height);
+        [self setup];
+    }
+    return self;
+}
+
 #pragma mark - event method 
 - (void)didTapButton:(UIButton *)sender {
     NSUInteger tag = sender.tag - kButtonTagOffset;
