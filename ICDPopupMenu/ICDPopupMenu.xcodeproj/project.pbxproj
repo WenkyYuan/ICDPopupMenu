@@ -11,7 +11,6 @@
 		268E1FDA1BF5B835000690B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 268E1FD91BF5B835000690B7 /* AppDelegate.m */; };
 		268E1FE21BF5B835000690B7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 268E1FE11BF5B835000690B7 /* Images.xcassets */; };
 		268E1FE51BF5B835000690B7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 268E1FE31BF5B835000690B7 /* LaunchScreen.xib */; };
-		268E1FFF1BF5B898000690B7 /* ICDPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 268E1FFC1BF5B898000690B7 /* ICDPopup.m */; };
 		268E20001BF5B898000690B7 /* ICDPopupMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 268E1FFE1BF5B898000690B7 /* ICDPopupMenu.m */; };
 		268E20031BF5B92A000690B7 /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 268E20021BF5B92A000690B7 /* UIImage+Color.m */; };
 		268E200F1BF6CE4C000690B7 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 268E200D1BF6CE4C000690B7 /* TestViewController.m */; };
@@ -26,8 +25,6 @@
 		268E1FD91BF5B835000690B7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		268E1FE11BF5B835000690B7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		268E1FE41BF5B835000690B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		268E1FFB1BF5B898000690B7 /* ICDPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICDPopup.h; sourceTree = "<group>"; };
-		268E1FFC1BF5B898000690B7 /* ICDPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICDPopup.m; sourceTree = "<group>"; };
 		268E1FFD1BF5B898000690B7 /* ICDPopupMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICDPopupMenu.h; sourceTree = "<group>"; };
 		268E1FFE1BF5B898000690B7 /* ICDPopupMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICDPopupMenu.m; sourceTree = "<group>"; };
 		268E20011BF5B92A000690B7 /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
@@ -94,8 +91,6 @@
 			children = (
 				268E20011BF5B92A000690B7 /* UIImage+Color.h */,
 				268E20021BF5B92A000690B7 /* UIImage+Color.m */,
-				268E1FFB1BF5B898000690B7 /* ICDPopup.h */,
-				268E1FFC1BF5B898000690B7 /* ICDPopup.m */,
 				268E1FFD1BF5B898000690B7 /* ICDPopupMenu.h */,
 				268E1FFE1BF5B898000690B7 /* ICDPopupMenu.m */,
 			);
@@ -172,7 +167,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				268E1FFF1BF5B898000690B7 /* ICDPopup.m in Sources */,
 				268E200F1BF6CE4C000690B7 /* TestViewController.m in Sources */,
 				268E1FDA1BF5B835000690B7 /* AppDelegate.m in Sources */,
 				268E20031BF5B92A000690B7 /* UIImage+Color.m in Sources */,
