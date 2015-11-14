@@ -19,7 +19,6 @@ static const NSUInteger kButtonTagOffset = 1000;
 @property (nonatomic, strong) UIView *arrowLayerBgView;
 @property (nonatomic, strong) UIView *itemContainerView;
 @property (nonatomic, copy) NSArray *btnItemArray; //array of btn
-@property (nonatomic, strong) UIView *inView;
 
 @end
 
@@ -40,23 +39,6 @@ static const NSUInteger kButtonTagOffset = 1000;
         [self setup];
     }
     return self;
-}
-
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    CGFloat width = CGRectGetWidth(self.bounds);
-    CGFloat height = CGRectGetHeight(self.bounds);
-    
-    //layerBgView
-    self.arrowLayerBgView.frame = CGRectMake(0, 0, width, height);
-    //itemContainerView
-    self.itemContainerView.frame = CGRectMake(0, kArrowHeight, width, height - kArrowHeight);
-    //items
-    CGFloat itemHeight = (height - kArrowHeight) / self.btnItemArray.count;
-    for (NSUInteger i = 0; i < self.btnItemArray.count; i ++ ) {
-        UIButton *item = self.btnItemArray[i];
-        item.frame = CGRectMake(0, i * itemHeight, width, itemHeight);
-    }
 }
 
 #pragma mark - event method 
@@ -89,18 +71,87 @@ static const NSUInteger kButtonTagOffset = 1000;
 
 
 - (void)showInView:(UIView *)inView startPoint:(CGPoint)startPoint arrowPositon:(ICDPopupMenuArrowPosition)position {
-    self.inView = inView;
+    CGFloat selfWidth = CGRectGetWidth(self.bounds);
+    CGFloat selfHeight = CGRectGetHeight(self.bounds);
     
-    //默认Center&Top
-    CGFloat selfCenterX = startPoint.x;
-    CGFloat selfCenterY = startPoint.y + CGRectGetHeight(self.bounds) / 2;
+    CGFloat selfCenterX = 0;
+    CGFloat selfCenterY = 0;
+    CGRect itemContainerViewFrame = CGRectZero;
+    
     if (position == ICDPopupMenuArrowPositionTopLeft) {
-        selfCenterX = startPoint.x - kArrowWidth/2-kArrowTrailingSuperSpacing + CGRectGetWidth(self.bounds) / 2;
-        selfCenterY = startPoint.y + CGRectGetHeight(self.bounds) / 2;
+        selfCenterX = startPoint.x - kArrowWidth / 2 - kArrowTrailingSuperSpacing + selfWidth / 2;
+        selfCenterY = startPoint.y + selfHeight / 2;
+        itemContainerViewFrame = CGRectMake(0, kArrowHeight, selfWidth, selfHeight - kArrowHeight);
+    }
+    if (position == ICDPopupMenuArrowPositionTopCenter) {
+        selfCenterX = startPoint.x;
+        selfCenterY = startPoint.y + selfHeight / 2;
+        itemContainerViewFrame = CGRectMake(0, kArrowHeight, selfWidth, selfHeight - kArrowHeight);
     }
     if (position == ICDPopupMenuArrowPositionTopRight) {
-        selfCenterX = startPoint.x + kArrowWidth/2+kArrowTrailingSuperSpacing - CGRectGetWidth(self.bounds) / 2;
-        selfCenterY = startPoint.y + CGRectGetHeight(self.bounds) / 2;
+        selfCenterX = startPoint.x + kArrowWidth / 2 + kArrowTrailingSuperSpacing - selfWidth / 2;
+        selfCenterY = startPoint.y + selfHeight / 2;
+        itemContainerViewFrame = CGRectMake(0, kArrowHeight, selfWidth, selfHeight - kArrowHeight);
+    }
+    
+    if (position == ICDPopupMenuArrowPositionBottomLeft) {
+        selfCenterX = startPoint.x - kArrowWidth / 2 - kArrowTrailingSuperSpacing + selfWidth / 2;
+        selfCenterY = startPoint.y - selfHeight / 2;
+        itemContainerViewFrame = CGRectMake(0, 0, selfWidth, selfHeight - kArrowHeight);
+    }
+    if (position == ICDPopupMenuArrowPositionBottomCenter) {
+        selfCenterX = startPoint.x;
+        selfCenterY = startPoint.y - selfHeight / 2;
+        itemContainerViewFrame = CGRectMake(0, 0, selfWidth, selfHeight - kArrowHeight);
+    }
+    if (position == ICDPopupMenuArrowPositionBottomRight) {
+        selfCenterX = startPoint.x + kArrowWidth / 2 + kArrowTrailingSuperSpacing - selfWidth / 2;
+        selfCenterY = startPoint.y - selfHeight / 2;
+        itemContainerViewFrame = CGRectMake(0, 0, selfWidth, selfHeight - kArrowHeight);
+    }
+    
+    if (position == ICDPopupMenuArrowPositionLeftTop) {
+        selfCenterX = startPoint.x + selfWidth / 2;
+        selfCenterY = startPoint.y - kArrowWidth / 2 - kArrowTrailingSuperSpacing + selfHeight / 2;
+        itemContainerViewFrame = CGRectMake(kArrowHeight, 0, selfWidth - kArrowHeight, selfHeight);
+    }
+    if (position == ICDPopupMenuArrowPositionLeftCenter) {
+        selfCenterX = startPoint.x + selfWidth / 2;
+        selfCenterY = startPoint.y;
+        itemContainerViewFrame = CGRectMake(kArrowHeight, 0, selfWidth - kArrowHeight, selfHeight);
+    }
+    if (position == ICDPopupMenuArrowPositionLeftBottom) {
+        selfCenterX = startPoint.x + selfWidth / 2;
+        selfCenterY = startPoint.y + kArrowWidth / 2 + kArrowTrailingSuperSpacing - selfHeight / 2;
+        itemContainerViewFrame = CGRectMake(kArrowHeight, 0, selfWidth - kArrowHeight, selfHeight);
+    }
+    
+    if (position == ICDPopupMenuArrowPositionRightTop) {
+        selfCenterX = startPoint.x - selfWidth / 2;
+        selfCenterY = startPoint.y - kArrowWidth / 2 - kArrowTrailingSuperSpacing + selfHeight / 2;
+        itemContainerViewFrame = CGRectMake(0, 0, selfWidth - kArrowHeight, selfHeight);
+    }
+    if (position == ICDPopupMenuArrowPositionRightCenter) {
+        selfCenterX = startPoint.x - selfWidth / 2;
+        selfCenterY = startPoint.y;
+        itemContainerViewFrame = CGRectMake(0, 0, selfWidth - kArrowHeight, selfHeight);
+    }
+    if (position == ICDPopupMenuArrowPositionRightBottom) {
+        selfCenterX = startPoint.x - selfWidth / 2;
+        selfCenterY = startPoint.y + kArrowWidth / 2 + kArrowTrailingSuperSpacing - selfHeight / 2;
+        itemContainerViewFrame = CGRectMake(0, 0, selfWidth - kArrowHeight, selfHeight);
+    }
+    
+    //layerBgView
+    self.arrowLayerBgView.frame = CGRectMake(0, 0, selfWidth, selfHeight);
+    //itemContainerView
+    self.itemContainerView.frame = itemContainerViewFrame;
+    //items
+    CGFloat itemWidth = CGRectGetWidth(itemContainerViewFrame);
+    CGFloat itemHeight = CGRectGetHeight(itemContainerViewFrame) / self.btnItemArray.count;
+    for (NSUInteger i = 0; i < self.btnItemArray.count; i ++ ) {
+        UIButton *item = self.btnItemArray[i];
+        item.frame = CGRectMake(0, i * itemHeight, itemWidth, itemHeight);
     }
     
     CGRect frame = self.frame;
@@ -112,7 +163,37 @@ static const NSUInteger kButtonTagOffset = 1000;
     [popup showAtCenter:CGPointMake(selfCenterX, selfCenterY) startPoint:startPoint inView:inView animation:YES];
     
     //需要加入到popup后才能计算出三角形指示箭头的位置，此时才开始画layer
-    CAShapeLayer *layer = [self createArrowLayerInSuperStartPoint:startPoint];
+    [self addArrowLayer:startPoint inView:inView position:position];
+}
+
+- (void)addArrowLayer:(CGPoint)startPoint inView:(UIView *)inView position:(ICDPopupMenuArrowPosition)position {
+    startPoint = [self convertPoint:startPoint fromView:inView];
+    
+    CGPoint arrowTopPoint = startPoint;
+    CGPoint arrowPointA = CGPointMake(arrowTopPoint.x - kArrowWidth/2, kArrowHeight);
+    CGPoint arrowPointB = CGPointMake(arrowTopPoint.x + kArrowWidth/2, kArrowHeight);
+
+    if (position == ICDPopupMenuArrowPositionTopLeft || position == ICDPopupMenuArrowPositionTopCenter || position == ICDPopupMenuArrowPositionTopRight) {
+        arrowPointA = CGPointMake(arrowTopPoint.x - kArrowWidth/2, arrowTopPoint.y + kArrowHeight);
+        arrowPointB = CGPointMake(arrowTopPoint.x + kArrowWidth/2, arrowTopPoint.y + kArrowHeight);
+    }
+    
+    if (position == ICDPopupMenuArrowPositionBottomLeft || position == ICDPopupMenuArrowPositionBottomCenter || position == ICDPopupMenuArrowPositionBottomRight) {
+        arrowPointA = CGPointMake(arrowTopPoint.x + kArrowWidth/2, arrowTopPoint.y - kArrowHeight);
+        arrowPointB = CGPointMake(arrowTopPoint.x - kArrowWidth/2, arrowTopPoint.y - kArrowHeight);
+    }
+    
+    if (position == ICDPopupMenuArrowPositionLeftTop || position == ICDPopupMenuArrowPositionLeftCenter || position == ICDPopupMenuArrowPositionLeftBottom) {
+        arrowPointA = CGPointMake(arrowTopPoint.x + kArrowHeight, arrowTopPoint.y + kArrowWidth / 2);
+        arrowPointB = CGPointMake(arrowTopPoint.x + kArrowHeight, arrowTopPoint.y - kArrowWidth / 2);
+    }
+    
+    if (position == ICDPopupMenuArrowPositionRightTop || position == ICDPopupMenuArrowPositionRightCenter || position == ICDPopupMenuArrowPositionRightBottom) {
+        arrowPointA = CGPointMake(arrowTopPoint.x - kArrowHeight, arrowTopPoint.y - kArrowWidth / 2);
+        arrowPointB = CGPointMake(arrowTopPoint.x - kArrowHeight, arrowTopPoint.y + kArrowWidth / 2);
+        
+    }
+    CAShapeLayer *layer = [self createArrowLayerWithArrowPointT:arrowTopPoint pointA:arrowPointA pointB:arrowPointB];
     [_arrowLayerBgView.layer addSublayer:layer];
 }
 
@@ -149,21 +230,13 @@ static const NSUInteger kButtonTagOffset = 1000;
     return button;
 }
 
-- (CAShapeLayer *)createArrowLayerInSuperStartPoint:(CGPoint)superStartPoint {
+- (CAShapeLayer *)createArrowLayerWithArrowPointT:(CGPoint)pointT pointA:(CGPoint)pointA pointB:(CGPoint)pointB {
     CAShapeLayer *layer = [CAShapeLayer new];
     
-    CGFloat width = kArrowWidth;
-    CGFloat height = kArrowHeight;
-    
-    CGPoint startPoint = [self convertPoint:superStartPoint fromView:self.inView];
-    
-    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, kArrowHeight, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) - kArrowHeight) byRoundingCorners:UIRectCornerAllCorners cornerRadii:CGSizeMake(5, 5)];
-    CGPoint arrowTopPoint = startPoint;
-    CGPoint arrowLeftPoint = CGPointMake(arrowTopPoint.x - width/2, height);
-    CGPoint arrowRightPoint = CGPointMake(arrowTopPoint.x + width/2, height);
-    [path moveToPoint:arrowLeftPoint];
-    [path addLineToPoint:arrowTopPoint];
-    [path addLineToPoint:arrowRightPoint];
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:self.itemContainerView.frame byRoundingCorners:UIRectCornerAllCorners cornerRadii:CGSizeMake(5, 5)];
+    [path moveToPoint:pointA];
+    [path addLineToPoint:pointT];
+    [path addLineToPoint:pointB];
     [path closePath];
     
     layer.path = path.CGPath;
