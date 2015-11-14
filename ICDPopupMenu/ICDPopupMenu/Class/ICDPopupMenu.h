@@ -63,12 +63,16 @@ typedef void(^ICDPopupMenuActionHandler)(ICDPopupMenu *view, NSUInteger index);
 
 @property (nonatomic, copy) ICDPopupMenuActionHandler actionHandler;
 
+//初始化方法，size为Menu大小，包括箭头
 - (instancetype)initWithMenuSize:(CGSize)size;
 
+//从导航栏左按钮或右按钮下方弹出
 - (void)showFromNavigationBarButtonItem:(UIBarButtonItem *)barButtonItem;
 
+//从某个控件（startView）对应位置弹出
 - (void)showFromStartView:(UIView *)startView arrowPositon:(ICDPopupMenuArrowPosition)position;
 
+//从某个点弹出，inView为此点所在View
 - (void)showFromStartPoint:(CGPoint)startPoint inView:(UIView *)inView arrowPositon:(ICDPopupMenuArrowPosition)position;
 
 @end
