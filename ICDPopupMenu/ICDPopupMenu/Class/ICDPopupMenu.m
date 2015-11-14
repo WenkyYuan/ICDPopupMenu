@@ -241,8 +241,9 @@ static const NSUInteger kButtonTagOffset = 1000;
 #pragma mark - public methods
 - (void)showFromNavigationBarButtonItem:(UIBarButtonItem *)barButtonItem {
     UIView *itemView = [barButtonItem valueForKey:@"view"];
-    CGPoint itemViewCenter = itemView.center;
+    UIView *inView = itemView.window.rootViewController.view;
     
+    CGPoint itemViewCenter = itemView.center;
     CGPoint startPoint = CGPointMake(itemViewCenter.x, 64);
     
     ICDPopupMenuArrowPosition arrowPositon;
@@ -254,7 +255,7 @@ static const NSUInteger kButtonTagOffset = 1000;
         arrowPositon = ICDPopupMenuArrowPositionTopRight;
     }
     
-    [self showFromStartPoint:startPoint inView:itemView.window.rootViewController.view arrowPositon:arrowPositon];
+    [self showFromStartPoint:startPoint inView:inView arrowPositon:arrowPositon];
 }
 
 - (void)showFromStartView:(UIView *)startView arrowPositon:(ICDPopupMenuArrowPosition)position {
